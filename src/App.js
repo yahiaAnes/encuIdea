@@ -52,7 +52,7 @@ const App = () => {
       console.log(response);
       const responseText = response.text();
 
-    console.log(responseText);
+      //console.log(responseText);
 
 
     setChatHistory([
