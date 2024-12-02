@@ -16,7 +16,7 @@ const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const genAI = new GoogleGenerativeAI("AIzaSyDR9lGdA6Qem-cPv71C8kwdTre2LKFSnSA");
+  const genAI = new GoogleGenerativeAI("AIzaSyAOAdrcYT1-yigIlw84N52N1zIMpmRb3UM");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
