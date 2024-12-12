@@ -5,6 +5,7 @@ import "./App.css";
 import ChatHistory from "./component/ChatHistory";
 import Loading from "./component/Loading";
 import encu  from './assets/encu.png'
+import { Highlighter, SelectionProvider } from 'react-selection-highlighter'
 
 const App = () => {
   const [questionOne, setQuestionOne] = useState("");
@@ -16,6 +17,12 @@ const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const text = `All these key info including endpoints, offsets, nodes, and text portions are kept in the components state. If an optional callback is provided, we call it with an object argument containing selection text and endpoints.
+
+  Although quite simpler on the surface, there are following hidden complexities in this selection logic:
+  
+  After the initial selection, new span nodes get introduced (to mark the highlighted text using CSS styling). These changes introduce new anchorNode/focusNode for each span along with relative offsets. For any further selections, we may then have to do relative adjustments depending on which span we started from using the earlier selection`;
+   
   const genAI = new GoogleGenerativeAI("AIzaSyAOAdrcYT1-yigIlw84N52N1zIMpmRb3UM");
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
@@ -89,6 +96,9 @@ const App = () => {
       </h1>
 
       <div className="chat-container w-full max-w-3xl bg-white shadow-lg rounded-lg p-6 mb-8">
+      <SelectionProvider>
+                <Highlighter htmlString={text} />
+            </SelectionProvider>
         <ChatHistory chatHistory={chatHistory} />
         <Loading isLoading={isLoading} />
       </div>

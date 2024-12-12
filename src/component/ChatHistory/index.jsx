@@ -2,6 +2,7 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 
 const ChatHistory = ({ chatHistory }) => {
+ 
   return (
     <div className="space-y-4">
       {chatHistory.map((message, index) => (
@@ -28,7 +29,9 @@ const ChatHistory = ({ chatHistory }) => {
                 : "whitespace-pre-wrap text-black text-xl text-right w-full"
             }`}
           >
+            
             <ReactMarkdown>{message.message}</ReactMarkdown>
+
           </div>
         </div>
       ))}
